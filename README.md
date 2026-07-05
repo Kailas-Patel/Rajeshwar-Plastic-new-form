@@ -179,7 +179,7 @@ options=[
 "100G",
 "150G",
 "200G",
-"250G",
+"300G",
 "Custom"
 ];
 quantity.placeholder="Enter Quantity in KG";

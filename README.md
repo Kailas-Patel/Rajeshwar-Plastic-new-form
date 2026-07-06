@@ -127,28 +127,40 @@ div.className="order-row";
 div.innerHTML=`
 
 <label>Product</label>
-<select class="product" onchange="updateVariety(this)">
+<select class="product" onchange="updateFields(this)">
 <option value="">Select Product</option>
-<option>Bag</option>
+
+<option>LD Bag</option>
+<option>PP Bag</option>
+<option>100g Bag</option>
+<option>50g Bag</option>
+<option>HM Bag</option>
 <option>Corrugated Roll</option>
 <option>Sutli</option>
 <option>Patti</option>
 <option>Clip</option>
 <option>Marker</option>
 <option>Color</option>
+
 </select>
 
-<label>Variety</label>
-<select class="variety">
+<label id="typeLabel">Size / Type</label>
+
+<select class="typeField">
 <option>Select Product First</option>
 </select>
 
-<input type="text" class="customVariety"
-placeholder="Enter Custom Variety"
+<input
+type="text"
+class="customSize"
+placeholder="Enter Size"
 style="display:none;">
 
 <label>Quantity</label>
-<input type="text" class="quantity"
+
+<input
+type="text"
+class="quantity"
 placeholder="Enter Quantity">
 
 `;
@@ -156,72 +168,114 @@ placeholder="Enter Quantity">
 document.getElementById("orders").appendChild(div);
 }
 
-function updateVariety(productSelect){
+function updateFields(productSelect){
 
 let row=productSelect.parentElement;
-let variety=row.querySelector(".variety");
+
+let type=row.querySelector(".typeField");
+
+let custom=row.querySelector(".customSize");
+
 let quantity=row.querySelector(".quantity");
-let custom=row.querySelector(".customVariety");
 
 custom.style.display="none";
 
+type.innerHTML="";
+
 let product=productSelect.value;
 
-let options=[];
+let list=[];
 
-if(product==="Bag"){
-options=[
-"LD",
-"PP",
-"HM",
-"50G",
-"100G",
-"150G",
-"200G",
-"300G",
-"Custom"
-];
-quantity.placeholder="Enter Quantity in KG";
+if(product=="LD Bag" || product=="PP Bag" || product=="HM Bag"){
+
+list=["Enter Manually"];
+
+custom.style.display="block";
+
+quantity.placeholder="Quantity in KG";
+
 }
 
-if(product==="Corrugated Roll"){
-options=["24","36","40"];
-quantity.placeholder="Enter Quantity in Rolls";
+else if(product=="Corrugated Roll"){
+
+list=["24","36","40"];
+
+quantity.placeholder="Quantity in Rolls";
+
 }
 
-if(product==="Sutli"){
-options=["Neha","Dolphin","Packer"];
-quantity.placeholder="Enter Quantity in KG";
+else if(product=="Sutli"){
+
+list=["Neha","Dolphin","Packer"];
+
+quantity.placeholder="Quantity in KG";
+
 }
 
-if(product==="Patti"){
-options=["2 KG Patti","10 KG Patti"];
-quantity.placeholder="Enter Quantity in Bundles";
+else if(product=="Patti"){
+
+list=["2 KG Patti","10 KG Patti"];
+
+quantity.placeholder="Quantity in Bundles";
+
 }
 
-if(product==="Clip"){
-options=["Standard"];
-quantity.placeholder="Enter Quantity in KG";
+else if(product=="Clip"){
+
+list=["Standard"];
+
+quantity.placeholder="Quantity in KG";
+
 }
 
-if(product==="Marker"){
-options=["Red","Blue","Black"];
-quantity.placeholder="Enter Quantity in Pieces or Boxes";
+else if(product=="Marker"){
+
+list=["Red","Blue","Black"];
+
+quantity.placeholder="Quantity in Pieces / Boxes";
+
 }
 
-if(product==="Color"){
-options=[
+else if(product=="Color"){
+
+list=[
+
 "Pink 100G",
+
 "Pink 500G",
+
 "Pink 1KG",
+
 "Blue 100G",
+
 "Blue 500G",
+
 "Blue 1KG",
+
 "Green 100G",
+
 "Green 500G",
+
 "Green 1KG"
+
 ];
-quantity.placeholder="Enter Quantity in Boxes";
+
+quantity.placeholder="Quantity in Boxes";
+
+}
+
+list.forEach(function(item){
+
+let op=document.createElement("option");
+
+op.text=item;
+
+op.value=item;
+
+type.appendChild(op);
+
+});
+
 }
 
 variety.innerHTML="";
@@ -267,17 +321,16 @@ let rows=document.querySelectorAll(".order-row");
 
 rows.forEach((row,index)=>{
 
-let product=row.querySelector(".product").value;
-let variety=row.querySelector(".variety").value;
-let custom=row.querySelector(".customVariety").value;
-let quantity=row.querySelector(".quantity").value;
+let type=row.querySelector(".typeField").value;
 
-if(variety==="Custom" && custom!==""){
-variety=custom;
+let custom=row.querySelector(".customSize").value;
+
+if(custom!=""){
+type=custom;
 }
 
 if(product!=="" && quantity!==""){
-message+=`${index+1}. ${product} - ${variety} - ${quantity}%0A`;
+message+=`${index+1}. ${product} - ${type} - ${quantity}%0A`;
 }
 });
 

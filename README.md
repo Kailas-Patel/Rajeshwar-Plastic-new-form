@@ -1,92 +1,237 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Rajeshwar Plastic Order Form</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
 body{
-    margin:0;
-    padding:15px;
-    font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#0d47a1,#1976d2,#42a5f5);
+
+background:linear-gradient(135deg,#0F4C81,#1E88E5);
+
+padding:20px;
+
+min-height:100vh;
+
 }
 
 .container{
-    max-width:650px;
-    margin:auto;
-    background:white;
-    border-radius:20px;
-    padding:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+
+max-width:700px;
+
+margin:auto;
+
+background:white;
+
+border-radius:20px;
+
+padding:25px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+
 }
 
 .header{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:15px;
-    margin-bottom:25px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:15px;
+
+margin-bottom:25px;
+
 }
 
 .logo{
-    width:70px;
-    height:70px;
-    border-radius:50%;
+
+width:70px;
+
+height:70px;
+
+border-radius:50%;
+
 }
 
-.company-name{
-    font-size:30px;
-    font-weight:900;
-    color:#0d47a1;
-    letter-spacing:2px;
+.company{
+
+font-size:34px;
+
+font-weight:800;
+
+color:#0F4C81;
+
+letter-spacing:2px;
+
 }
 
-label{
-    font-weight:bold;
-    margin-top:10px;
-    display:block;
+.input-group{
+
+margin-bottom:18px;
+
 }
 
-input,select{
-    width:100%;
-    padding:12px;
-    margin-top:5px;
-    margin-bottom:10px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    box-sizing:border-box;
+.input-group label{
+
+display:block;
+
+font-weight:600;
+
+margin-bottom:6px;
+
+color:#333;
+
 }
 
-.order-row{
-    border:2px solid #e0e0e0;
-    padding:15px;
-    border-radius:15px;
-    margin-top:15px;
-    background:#f9f9f9;
+.input-group input{
+
+width:100%;
+
+padding:12px;
+
+border-radius:10px;
+
+border:1px solid #ccc;
+
+font-size:16px;
+
 }
 
-button{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
+.order-card{
+
+margin-top:20px;
+
+background:#F8F9FA;
+
+padding:18px;
+
+border-radius:15px;
+
+border:2px solid #E5E5E5;
+
 }
 
-.add-btn{
-    background:#1976d2;
-    color:white;
-    margin-top:15px;
+.order-title{
+
+font-size:20px;
+
+font-weight:700;
+
+color:#0F4C81;
+
+margin-bottom:15px;
+
 }
 
-.whatsapp-btn{
-    background:#25D366;
-    color:white;
-    margin-top:15px;
+.order-card label{
+
+font-weight:600;
+
+margin-top:10px;
+
+display:block;
+
 }
+
+.order-card select,
+
+.order-card input{
+
+width:100%;
+
+padding:12px;
+
+margin-top:5px;
+
+border-radius:10px;
+
+border:1px solid #ccc;
+
+font-size:15px;
+
+}
+
+.button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:12px;
+
+font-size:18px;
+
+font-weight:700;
+
+cursor:pointer;
+
+margin-top:18px;
+
+transition:.3s;
+
+}
+
+.add{
+
+background:#1565C0;
+
+color:white;
+
+}
+
+.add:hover{
+
+background:#0D47A1;
+
+}
+
+.send{
+
+background:#25D366;
+
+color:white;
+
+}
+
+.send:hover{
+
+background:#128C7E;
+
+}
+
+.footer{
+
+text-align:center;
+
+margin-top:20px;
+
+font-size:13px;
+
+color:#666;
+
+}
+
 </style>
+
 </head>
 
 <body>
@@ -94,151 +239,469 @@ button{
 <div class="container">
 
 <div class="header">
+
 <img src="logo.png" class="logo">
-<div class="company-name">RAJESHWAR PLASTIC</div>
-</div>
 
-<label>Party Name *</label>
-<input type="text" id="partyName" required>
+<div class="company">
 
-<label>Phone Number *</label>
-<input type="tel" id="phoneNumber" required>
-
-<div id="orders"></div>
-
-<button class="add-btn" onclick="addOrder()">+ Add More Order</button>
-
-<button class="whatsapp-btn" onclick="sendWhatsApp()">
-Send Order on WhatsApp
-</button>
+RAJESHWAR PLASTIC
 
 </div>
 
-<script>
+</div>
 
-const whatsappNumber="1234567890";
+<div class="input-group">
 
-function addOrder(){
+<label>
 
-let div=document.createElement("div");
+Party Name *
 
-div.className="order-row";
+</label>
 
-div.innerHTML=`
+<input type="text" id="party">
 
-<label>Product</label>
-<select class="product" onchange="updateFields(this)">
-<option value="">Select Product</option>
+</div>
+
+<div class="input-group">
+
+<label>
+
+Phone Number *
+
+</label>
+
+<input type="tel" id="phone">
+
+</div>
+
+<div id="orders">
+
+<div class="order-card">
+
+<div class="order-title">
+
+Order Item 1
+
+</div>
+
+<label>
+
+Product
+
+</label>
+
+<select class="product">
+
+<option>Select Product</option>
 
 <option>LD Bag</option>
+
 <option>PP Bag</option>
-<option>100g Bag</option>
-<option>50g Bag</option>
+
 <option>HM Bag</option>
+
 <option>Corrugated Roll</option>
+
 <option>Sutli</option>
+
 <option>Patti</option>
+
 <option>Clip</option>
+
 <option>Marker</option>
+
 <option>Color</option>
 
 </select>
 
-<label id="typeLabel">Size / Type</label>
+<label>
 
-<select class="typeField">
+Size / Type
+
+</label>
+
+<select class="size">
+
 <option>Select Product First</option>
+
 </select>
 
+<label>
+
+Quantity
+
+</label>
+
 <input
+
 type="text"
+
+class="qty"
+
+placeholder="Enter Quantity"
+
+>
+
+</div>
+
+</div>
+
+<button class="button add" onclick="addOrder()">
+
++ Add More Order
+
+</button>
+
+<button class="button send" onclick="sendWhatsApp()">
+
+Send Order On WhatsApp
+
+</button>
+
+<div class="footer">
+
+Rajeshwar Plastic © 2026
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+
+<script>
+
+const productData={
+
+"LD Bag":{
+type:"input",
+placeholder:"Enter Bag Size (Example: 6×8)"
+},
+
+"PP Bag":{
+type:"input",
+placeholder:"Enter Bag Size (Example: 12×16)"
+},
+
+"HM Bag":{
+type:"input",
+placeholder:"Enter Bag Size (Example: 14×18)"
+},
+
+"Corrugated Roll":{
+type:"select",
+options:["24","36","40"]
+},
+
+"Sutli":{
+type:"select",
+options:["Neha","Dolphin","Packer"]
+},
+
+"Patti":{
+type:"select",
+options:["2 KG Patti","10 KG Patti"]
+},
+
+"Clip":{
+type:"none"
+},
+
+"Marker":{
+type:"select",
+options:["Red","Blue","Black"]
+},
+
+"Color":{
+type:"select",
+options:[
+"Pink 100G",
+"Pink 500G",
+"Pink 1KG",
+"Blue 100G",
+"Blue 500G",
+"Blue 1KG",
+"Green 100G",
+"Green 500G",
+"Green 1KG"
+]
+}
+
+};
+
+document.querySelectorAll(".product").forEach(product=>{
+
+product.addEventListener("change",function(){
+
+const card=this.closest(".order-card");
+
+const size=card.querySelector(".size");
+
+const qty=card.querySelector(".qty");
+
+let value=this.value;
+
+size.innerHTML="";
+
+size.style.display="block";
+
+if(productData[value].type=="input"){
+
+size.innerHTML=
+`<option>Custom Size</option>`;
+
+size.insertAdjacentHTML(
+"afterend",
+`<input type="text"
 class="customSize"
-placeholder="Enter Size"
-style="display:none;">
+placeholder="${productData[value].placeholder}">`
+);
 
-<label>Quantity</label>
+qty.placeholder="Enter Quantity in KG";
+
+}
+
+else if(productData[value].type=="select"){
+
+card.querySelectorAll(".customSize").forEach(e=>e.remove());
+
+productData[value].options.forEach(function(item){
+
+let option=document.createElement("option");
+
+option.text=item;
+
+option.value=item;
+
+size.appendChild(option);
+
+});
+
+if(value=="Corrugated Roll")
+qty.placeholder="Enter Quantity in Rolls";
+
+if(value=="Sutli")
+qty.placeholder="Enter Quantity in KG";
+
+if(value=="Patti")
+qty.placeholder="Enter Quantity in Bundles";
+
+if(value=="Marker")
+qty.placeholder="Enter Quantity in Pieces / Boxes";
+
+if(value=="Color")
+qty.placeholder="Enter Quantity in Boxes";
+
+}
+
+else{
+
+card.querySelectorAll(".customSize").forEach(e=>e.remove());
+
+size.innerHTML="<option>No Size Required</option>";
+
+qty.placeholder="Enter Quantity in KG";
+
+}
+
+});
+
+});
+
+</script>
+
+<script>
+
+let orderCount = 1;
+
+function addOrder(){
+
+orderCount++;
+
+const orderHTML=`
+
+<div class="order-card">
+
+<div class="order-title">
+
+Order Item ${orderCount}
+
+</div>
+
+<label>Product</label>
+
+<select class="product" onchange="changeProduct(this)">
+
+<option>Select Product</option>
+
+<option>LD Bag</option>
+
+<option>PP Bag</option>
+
+<option>HM Bag</option>
+
+<option>Corrugated Roll</option>
+
+<option>Sutli</option>
+
+<option>Patti</option>
+
+<option>Clip</option>
+
+<option>Marker</option>
+
+<option>Color</option>
+
+</select>
+
+<label>
+
+Size / Type
+
+</label>
+
+<select class="size">
+
+<option>Select Product First</option>
+
+</select>
+
+<label>
+
+Quantity
+
+</label>
 
 <input
+
 type="text"
-class="quantity"
-placeholder="Enter Quantity">
+
+class="qty"
+
+placeholder="Enter Quantity"
+
+>
+
+<button
+
+style="margin-top:15px;
+background:#E53935;
+color:white;
+padding:10px;
+width:100%;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;"
+
+onclick="this.parentElement.remove()"
+
+>
+
+Remove Order
+
+</button>
+
+</div>
 
 `;
 
-document.getElementById("orders").appendChild(div);
-}
+document.getElementById("orders")
 
-function updateFields(productSelect){
-
-let row=productSelect.parentElement;
-
-let type=row.querySelector(".typeField");
-
-let custom=row.querySelector(".customSize");
-
-let quantity=row.querySelector(".quantity");
-
-custom.style.display="none";
-
-type.innerHTML="";
-
-let product=productSelect.value;
-
-let list=[];
-
-if(product=="LD Bag" || product=="PP Bag" || product=="HM Bag"){
-
-list=["Enter Manually"];
-
-custom.style.display="block";
-
-quantity.placeholder="Quantity in KG";
+.insertAdjacentHTML("beforeend",orderHTML);
 
 }
 
-else if(product=="Corrugated Roll"){
+function changeProduct(select){
 
-list=["24","36","40"];
+const card=select.parentElement;
 
-quantity.placeholder="Quantity in Rolls";
+const size=card.querySelector(".size");
 
-}
+const qty=card.querySelector(".qty");
 
-else if(product=="Sutli"){
+size.innerHTML="";
 
-list=["Neha","Dolphin","Packer"];
+size.style.display="block";
 
-quantity.placeholder="Quantity in KG";
+let value=select.value;
 
-}
+if(value=="LD Bag" || value=="PP Bag" || value=="HM Bag"){
 
-else if(product=="Patti"){
+size.innerHTML="<option>Custom Size</option>";
 
-list=["2 KG Patti","10 KG Patti"];
+size.insertAdjacentHTML(
 
-quantity.placeholder="Quantity in Bundles";
+"afterend",
 
-}
+'<input class="customSize" placeholder="Enter Size Example 6×8">'
 
-else if(product=="Clip"){
+);
 
-list=["Standard"];
+qty.placeholder="Enter Quantity in KG";
 
-quantity.placeholder="Quantity in KG";
-
-}
-
-else if(product=="Marker"){
-
-list=["Red","Blue","Black"];
-
-quantity.placeholder="Quantity in Pieces / Boxes";
+return;
 
 }
 
-else if(product=="Color"){
+card.querySelectorAll(".customSize")
 
-list=[
+.forEach(e=>e.remove());
+
+function addOptions(arr){
+
+arr.forEach(function(item){
+
+size.innerHTML+=`<option>${item}</option>`;
+
+});
+
+}
+
+if(value=="Corrugated Roll"){
+
+addOptions(["24","36","40"]);
+
+qty.placeholder="Enter Quantity in Rolls";
+
+}
+
+if(value=="Sutli"){
+
+addOptions(["Neha","Dolphin","Packer"]);
+
+qty.placeholder="Enter Quantity in KG";
+
+}
+
+if(value=="Patti"){
+
+addOptions(["2 KG Patti","10 KG Patti"]);
+
+qty.placeholder="Enter Quantity in Bundles";
+
+}
+
+if(value=="Clip"){
+
+size.innerHTML="<option>No Size Required</option>";
+
+qty.placeholder="Enter Quantity in KG";
+
+}
+
+if(value=="Marker"){
+
+addOptions(["Red","Blue","Black"]);
+
+qty.placeholder="Enter Quantity in Pieces / Boxes";
+
+}
+
+if(value=="Color"){
+
+addOptions([
 
 "Pink 100G",
 
@@ -258,92 +721,81 @@ list=[
 
 "Green 1KG"
 
-];
+]);
 
-quantity.placeholder="Quantity in Boxes";
-
-}
-
-list.forEach(function(item){
-
-let op=document.createElement("option");
-
-op.text=item;
-
-op.value=item;
-
-type.appendChild(op);
-
-});
+qty.placeholder="Enter Quantity in Boxes";
 
 }
 
-variety.innerHTML="";
-
-options.forEach(function(item){
-let opt=document.createElement("option");
-opt.value=item;
-opt.text=item;
-variety.appendChild(opt);
-});
-
-variety.onchange=function(){
-if(this.value==="Custom"){
-custom.style.display="block";
-}else{
-custom.style.display="none";
-}
-}
 }
 
+</script>
 function sendWhatsApp(){
 
-let party=document.getElementById("partyName").value.trim();
-let phone=document.getElementById("phoneNumber").value.trim();
+let party=document.getElementById("party").value.trim();
+let phone=document.getElementById("phone").value.trim();
 
-if(party===""){
-alert("Please enter Party Name");
+if(party==""){
+alert("Please Enter Party Name");
 return;
 }
 
-if(phone===""){
-alert("Please enter Phone Number");
+if(phone==""){
+alert("Please Enter Phone Number");
 return;
 }
 
-let message=
-`*RAJESHWAR PLASTIC ORDER*%0A%0A`;
+let msg="*RAJESHWAR PLASTIC ORDER*%0A%0A";
 
-message+=`*Party Name:* ${party}%0A`;
-message+=`*Phone:* ${phone}%0A%0A`;
+msg+="*Party Name:* "+party+"%0A";
+msg+="*Phone:* "+phone+"%0A%0A";
 
-let rows=document.querySelectorAll(".order-row");
+let cards=document.querySelectorAll(".order-card");
 
-rows.forEach((row,index)=>{
+cards.forEach(function(card,index){
 
-let type=row.querySelector(".typeField").value;
+let product=card.querySelector(".product").value;
 
-let custom=row.querySelector(".customSize").value;
+if(product=="Select Product") return;
 
-if(custom!=""){
-type=custom;
+let size="";
+
+let custom=card.querySelector(".customSize");
+
+if(custom){
+
+size=custom.value;
+
+}else{
+
+size=card.querySelector(".size").value;
+
 }
 
-if(product!=="" && quantity!==""){
-message+=`${index+1}. ${product} - ${type} - ${quantity}%0A`;
+let qty=card.querySelector(".qty").value;
+
+if(qty=="") return;
+
+msg+=
+(index+1)+". "+product+
+"%0A";
+
+if(product!="Clip"){
+
+msg+="Type/Size : "+size+"%0A";
+
 }
+
+msg+="Quantity : "+qty+"%0A%0A";
+
 });
 
 window.open(
-`https://wa.me/${whatsappNumber}?text=${message}`,
-'_blank'
+
+"https://wa.me9594459534/?text="+msg,
+
+"_blank"
+
 );
 
 }
-
-addOrder();
-
-</script>
-
-</body>
-</html>

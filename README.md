@@ -52,6 +52,8 @@
           <option>Select Product</option>
           <option>LD Bag</option>
           <option>PP Bag</option>
+          <option>100g Bag</option>
+          <option>50g Bag</option>
           <option>HM Bag</option>
           <option>Corrugated Roll</option>
           <option>Sutli</option>
